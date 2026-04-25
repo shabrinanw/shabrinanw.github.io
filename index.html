@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio | Shabrina Nuryani Wijaya</title>
+
+    <!-- huruf -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <style>
+      :root {
+        --navy: #ff8800;
+        --blue: #1a4a8a;
+        --sky: #4a90d9;
+        --gold: #c9a84c;
+        --cream: #faf7f2;
+        --white: #ffffff;
+        --text: #1e1e2e;
+        --muted: #6b7280;
+        --card-bg: #ffffff;
+        --border: #e5e7eb;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: 'DM Sans', sans-serif;
+        background: var(--cream);
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      /* ===== SCROLLBAR ===== */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: var(--cream); }
+      ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
+
+      /* ===== NAVBAR ===== */
+      .navbar {
+        background: rgba(15, 35, 66, 0.95) !important;
+        backdrop-filter: blur(12px);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .navbar-brand {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.25rem;
+        color: var(--white) !important;
+        letter-spacing: 0.03em;
+      }
+
+      .navbar-brand span {
+        color: var(--gold);
+      }
+
+      .nav-link {
+        color: rgba(255,255,255,0.8) !important;
+        font-size: 0.875rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.5rem 1rem !important;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: var(--gold);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--gold) !important;
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 70%;
+      }
+
+      /* ===== Profile ===== */
+      .hero {
+        background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, #2563ab 100%);
+        padding: 6rem 0 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 92vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* dekorasi */
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+
+      /* animasi gradien */
+      .hero::after {
+        content: '';
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        padding: 0 1.5rem 4rem;
+        animation: fadeUp 0.9s ease forwards;
+      }
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* ===== PROFILE PHOTO ===== */
+      .profile-photo-wrap {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 2rem;
+      }
+
+      .profile-photo-wrap::before {
+        content: '';
+        position: absolute;
+        inset: -8px;
+        border-radius: 50%;
+        background: conic-gradient(var(--gold), #f0d080, var(--sky), var(--gold));
+        animation: spinBorder 6s linear infinite;
+        z-index: 0;
+      }
+
+      .profile-photo-wrap::after {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        background: var(--blue);
+        z-index: 1;
+      }
+
+      @keyframes spinBorder {
+        to { transform: rotate(360deg); }
+      }
+
+      .profile-photo {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        position: relative;
+        z-index: 2;
+        display: block;
+        border: 4px solid var(--navy);
+      }
+
+      .hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        color: var(--white);
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+      }
+
+      .hero h1 em {
+        color: var(--gold);
+        font-style: italic;
+      }
+
+      .hero-subtitle {
+        color: rgba(255,255,255,0.7);
+        font-size: 1rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+
+      .hero-nim {
+        display: inline-block;
+        background: rgba(201,168,76,0.15);
+        border: 1px solid rgba(201,168,76,0.4);
+        color: var(--gold);
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        padding: 0.35rem 1.2rem;
+        border-radius: 999px;
+        margin-bottom: 1.8rem;
+      }
+
+      .hero-socials a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: rgba(255,255,255,0.75);
+        text-decoration: none;
+        font-size: 0.875rem;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 0.5rem 1.2rem;
+        border-radius: 999px;
+        transition: all 0.3s ease;
+        margin: 0.3rem;
+      }
+
+      .hero-socials a:hover {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: var(--navy);
+        transform: translateY(-2px);
+      }
+
+      .hero-wave {
+        margin-top: auto;
+        width: 100%;
+        line-height: 0;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* ===== Base Stylenya ===== */
+      section { padding: 5rem 0; }
+
+      .section-label {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.5rem;
+      }
+
+      .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        color: var(--navy);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .section-divider {
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--gold), var(--sky));
+        border-radius: 2px;
+        margin: 0 auto 3rem;
+      }
+
+      /* ===== tentang saya ===== */
+      #about { background: var(--white); position: relative; overflow: hidden; }
+
+      .about-card {
+        background: linear-gradient(135deg, var(--navy), var(--blue));
+        border-radius: 24px;
+        padding: 3rem;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(15,35,66,0.2);
+      }
+
+      .about-card::before {
+        content: '"';
+        position: absolute;
+        top: -1rem;
+        left: 1.5rem;
+        font-family: 'Playfair Display', serif;
+        font-size: 12rem;
+        color: rgba(255,255,255,0.05);
+        line-height: 1;
+        pointer-events: none;
+      }
+
+      .about-card p {
+        font-size: 1.05rem;
+        line-height: 1.9;
+        color: rgba(255,255,255,0.85);
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ===== SKILLS ===== */
+      #skills { background: var(--cream); }
+
+      .skill-item {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 1.5rem;
+        text-align: center;
+        border: 1px solid var(--border);
+        transition: all 0.35s ease;
+        animation: fadeUp 0.6s ease both;
+      }
+
+      .skill-item:hover {
+        transform: translateY(-8px);
+        border-color: var(--gold);
+        box-shadow: 0 16px 40px rgba(201,168,76,0.15);
+      }
+
+      .skill-icon {
+        font-size: 2.2rem;
+        margin-bottom: 0.75rem;
+        display: block;
+      }
+
+      .skill-name {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--navy);
+      }
+
+      .skill-bar-wrap {
+        margin-top: 0.5rem;
+        background: var(--border);
+        border-radius: 999px;
+        height: 6px;
+        overflow: hidden;
+      }
+
+      .skill-bar {
+        height: 100%;
+        background: linear-gradient(90deg, var(--gold), var(--sky));
+        border-radius: 999px;
+        transition: width 1.5s ease;
+      }
+
+      /* ===== perjalanan studi ===== */
+      #education { background: var(--white); }
+
+      .timeline {
+        position: relative;
+        padding-left: 2rem;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--gold), var(--sky), transparent);
+        border-radius: 2px;
+      }
+
+      .timeline-item {
+        position: relative;
+        padding: 0 0 2.5rem 2rem;
+        animation: fadeUp 0.6s ease both;
+      }
+
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -0.45rem;
+        top: 0.25rem;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--gold);
+        border: 3px solid var(--white);
+        box-shadow: 0 0 0 3px var(--gold);
+      }
+
+      .timeline-year {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.25rem;
+      }
+
+      .timeline-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.1rem;
+        color: var(--navy);
+        margin-bottom: 0.2rem;
+      }
+
+      .timeline-sub {
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+
+      .timeline-badge {
+        display: inline-block;
+        background: rgba(201,168,76,0.12);
+        border: 1px solid rgba(201,168,76,0.35);
+        color: var(--gold);
+        font-size: 0.75rem;
+        padding: 0.2rem 0.75rem;
+        border-radius: 999px;
+        margin-top: 0.4rem;
+      }
+
+      /* ===== serti ===== */
+      #certificate { background: var(--cream); }
+
+      .cert-card {
+        background: var(--white);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 2px solid transparent;
+        background-clip: padding-box;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        transition: all 0.4s ease;
+        position: relative;
+      }
+
+      .cert-card::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        border-radius: 22px;
+        background: linear-gradient(135deg, var(--gold), var(--sky), var(--gold));
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .cert-card:hover::before { opacity: 1; }
+
+      .cert-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 60px rgba(201,168,76,0.2);
+      }
+
+      .cert-img-wrap {
+        overflow: hidden;
+        height: 200px;
+        background: #f3f4f6;
+      }
+
+      .cert-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .cert-card:hover .cert-img-wrap img {
+        transform: scale(1.06);
+      }
+
+      .cert-body {
+        padding: 1.25rem 1.5rem;
+      }
+
+      .cert-body p {
+        font-size: 0.875rem;
+        color: var(--muted);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .cert-icon {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, var(--gold), #f0d080);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+      }
+
+      .cert-icon i { color: var(--navy); font-size: 1rem; }
+
+      /* ===== projek ===== */
+      #projects { background: var(--white); }
+
+      .project-card {
+        background: var(--white);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        transition: all 0.4s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--sky);
+        box-shadow: 0 20px 50px rgba(74,144,217,0.15);
+      }
+
+      .project-header {
+        padding: 2rem 2rem 1.5rem;
+        background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-header::after {
+        content: '';
+        position: absolute;
+        bottom: -30px;
+        right: -30px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.05);
+      }
+
+      .project-tag {
+        display: inline-block;
+        background: rgba(201,168,76,0.2);
+        border: 1px solid rgba(201,168,76,0.4);
+        color: var(--gold);
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        margin-bottom: 1rem;
+      }
+
+      .project-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+
+      .project-body {
+        padding: 1.5rem 2rem 2rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-desc {
+        font-size: 0.9rem;
+        color: var(--muted);
+        line-height: 1.75;
+        flex: 1;
+      }
+
+      .project-meta {
+        margin-top: 1.25rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .project-chip {
+        font-size: 0.75rem;
+        background: #eff6ff;
+        color: var(--blue);
+        border: 1px solid #dbeafe;
+        padding: 0.2rem 0.65rem;
+        border-radius: 999px;
+      }
+
+      /* ===== kontak ===== */
+      #contact { background: var(--cream); }
+
+      .contact-form-wrap {
+        background: var(--white);
+        border-radius: 24px;
+        padding: 3rem;
+        border: 1px solid var(--border);
+        box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+      }
+
+      .form-label {
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--navy);
+        margin-bottom: 0.5rem;
+      }
+
+      .form-control {
+        border: 1.5px solid var(--border);
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        background: var(--cream);
+      }
+
+      .form-control:focus {
+        border-color: var(--sky);
+        box-shadow: 0 0 0 4px rgba(74,144,217,0.1);
+        background: white;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--gold), #e8b84b) !important;
+        border: none !important;
+        color: var(--navy) !important;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        padding: 0.75rem 2.5rem;
+        border-radius: 999px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(201,168,76,0.4);
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background: var(--navy);
+        color: rgba(255,255,255,0.6);
+        text-align: center;
+        padding: 2.5rem 1rem;
+        font-size: 0.85rem;
+        border-top: 1px solid rgba(201,168,76,0.2);
+      }
+
+      footer strong { color: var(--gold); }
+
+      /* ===== animasi ===== */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* bocah */
+      .stagger > * { opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+      .stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0.05s; }
+      .stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.15s; }
+      .stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.25s; }
+      .stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.35s; }
+      .stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.45s; }
+      .stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.55s; }
+      .stagger.visible > *:nth-child(n+7) { opacity:1; transform:none; transition-delay:0.65s; }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        .about-card { padding: 2rem 1.5rem; }
+        .contact-form-wrap { padding: 2rem 1.5rem; }
+        .project-body { padding: 1.25rem 1.25rem 1.5rem; }
+        .project-header { padding: 1.5rem; }
+        .timeline { padding-left: 1.5rem; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="#">Shabrina <span>N.W.</span></a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#education">Pendidikan</a></li>
+            <li class="nav-item"><a class="nav-link" href="#certificate">Sertifikat</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===== profile ===== -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="profile-photo-wrap">
+          <img src="profile.jpg" alt="Shabrina Nuryani Wijaya" class="profile-photo" />
+        </div>
+        <h1>Shabrina <em>Nuryani</em> Wijaya</h1>
+        <p class="hero-subtitle">Mahasiswa Sistem Informasi</p>
+        <span class="hero-nim">NIM: 515241017</span>
+        <br />
+        <div class="hero-socials">
+          <a href="https://www.linkedin.com/in/shabrina-nuryani-wijaya-694043324" target="_blank">
+            <i class="bi bi-linkedin"></i> LinkedIn
+          </a>
+          <a href="mailto:shabrina@email.com">
+            <i class="bi bi-envelope-fill"></i> Email
+          </a>
+          <a href="https://github.com" target="_blank">
+            <i class="bi bi-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+      <div class="hero-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+          <path fill="#ffffff" fill-opacity="1"
+            d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===== kartu nama ===== -->
+    <section id="about">
+      <div class="container">
+        <div class="text-center fade-in-up">
+          <p class="section-label">Siapa Saya</p>
+          <h2 class="section-title">About Me</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="row justify-content-center fade-in-up">
+          <div class="col-lg-9">
+            <div class="about-card">
+              <p class="mb-4">
+                Halo! Saya <strong>Shabrina Nuryani Wijaya</strong>, mahasiswa Sistem Informasi yang memiliki ketertarikan mendalam pada dunia teknologi dan pengembangan sistem digital. Saya senang mempelajari bagaimana teknologi dapat digunakan untuk menciptakan solusi yang efektif dan bermanfaat dalam kehidupan sehari-hari.
+              </p>
+              <p>
+                Melalui GitHub ini, saya mendokumentasikan proses belajar, proyek, serta eksplorasi saya di bidang IT. Saya terus berusaha mengembangkan keterampilan dan terbuka untuk berbagai peluang serta pengalaman baru di dunia teknologi — dari analisis sistem hingga desain visual dan kreasi konten digital.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== skill ===== -->
+    <section id="skills">
+      <div class="container">
+        <div class="text-center fade-in-up">
+          <p class="section-label">Kemampuan</p>
+          <h2 class="section-title">Keahlian</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="row g-3 stagger">
+          <div class="col-6 col-md-3">
+            <div class="skill-item">
+              <span class="skill-icon">🎨</span>
+              <div class="skill-name">Desain Grafis (DKV)</div>
+              <div class="skill-bar-wrap mt-2"><div class="skill-bar" style="width:85%"></div></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="skill-item">
+              <span class="skill-icon">💻</span>
+              <div class="skill-name">HTML & CSS</div>
+              <div class="skill-bar-wrap mt-2"><div class="skill-bar" style="width:78%"></div></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="skill-item">
+              <span class="skill-icon">📊</span>
+              <div class="skill-name">Sistem Informasi</div>
+              <div class="skill-bar-wrap mt-2"><div class="skill-bar" style="width:75%"></div></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="skill-item">
+              <span class="skill-icon">📷</span>
+              <div class="skill-name">Fotografi & Konten</div>
+              <div class="skill-bar-wrap mt-2"><div class="skill-bar" style="width:80%"></div></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="skill-item">
+              <span class="skill-icon">🔍</span>
+              <div class="skill-name">Analisis Digital</div>
+              <div class="skill-bar-wrap mt-2"><div class="skill-bar" style="width:70%"></div></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="skill-item">
+              <span class="skill-icon">🗣️</span>
+              <div class="skill-name">Riset & Wawancara</div>
+              <div class="skill-bar-wrap mt-2"><div class="skill-bar" style="width:72%"></div></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="skill-item">
+              <span class="skill-icon">📱</span>
+              <div class="skill-name">Media Sosial</div>
+              <div class="skill-bar-wrap mt-2"><div class="skill-bar" style="width:88%"></div></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="skill-item">
+              <span class="skill-icon">🤝</span>
+              <div class="skill-name">Teamwork</div>
+              <div class="skill-bar-wrap mt-2"><div class="skill-bar" style="width:92%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== perjalanan sekolah ===== -->
+    <section id="education">
+      <div class="container">
+        <div class="text-center fade-in-up">
+          <p class="section-label">Jejak Akademik</p>
+          <h2 class="section-title">Riwayat Pendidikan</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-7 fade-in-up">
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-year">2024 — Sekarang</div>
+                <div class="timeline-title">Universitas La Tansa Mashiro</div>
+                <div class="timeline-sub">S1 Sistem Informasi</div>
+                <span class="timeline-badge">NIM: 515241017</span>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-year">2021 — 2024</div>
+                <div class="timeline-title">SMK Negeri 1 Rangkasbitung</div>
+                <div class="timeline-sub">Desain Komunikasi Visual (DKV)</div>
+                <span class="timeline-badge">SMK</span>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-year">2018 — 2021</div>
+                <div class="timeline-title">SMP Negeri 2 Rangkasbitung</div>
+                <div class="timeline-sub">Sekolah Menengah Pertama</div>
+                <span class="timeline-badge">SMP</span>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-year">2012 — 2018</div>
+                <div class="timeline-title">SD Negeri 1 Rangkasbitung</div>
+                <div class="timeline-sub">Sekolah Dasar</div>
+                <span class="timeline-badge">SD</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== serti ===== -->
+    <section id="certificate">
+      <div class="container">
+        <div class="text-center fade-in-up">
+          <p class="section-label">Pencapaian</p>
+          <h2 class="section-title">Sertifikat</h2>
+          <div class="section-divider"></div>
+        </div>
+
+     
+
+        <div class="row stagger">
+          <div class="col-md-4 mb-4">
+            <div class="cert-card">
+              <div class="cert-img-wrap">
+                <img src="Serti1.jpg" alt="Sertifikat UNICOHSEM 2025" />
+              </div>
+              <div class="cert-body">
+                <div class="cert-icon"><i class="bi bi-award-fill"></i></div>
+                <p>UNICOHSEM 2025</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="cert-card">
+              <div class="cert-img-wrap">
+                <img src="Serti2.jpg" alt="Seminar IT HIMASI 2025" />
+              </div>
+              <div class="cert-body">
+                <div class="cert-icon"><i class="bi bi-award-fill"></i></div>
+                <p>Seminar Kompetensi Digital Di Era Society 5.0 — Teknologi dan Informasi Penunjang SDM yang Kompatible 2025</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="cert-card">
+              <div class="cert-img-wrap">
+                <img src="Serti3.jpg" alt="Seminar Fotografi 2025" />
+              </div>
+              <div class="cert-body">
+                <div class="cert-icon"><i class="bi bi-award-fill"></i></div>
+                <p>Seminar dan Pelatihan Fotografi Konten Kreasi 2025</p>
+              </div>
+            </div>
+          </div>
+          
+
+          <!-- Tambah Serti -->
+           
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+      <div class="container">
+        <div class="text-center fade-in-up">
+          <p class="section-label">Karya & Penelitian</p>
+          <h2 class="section-title">Projects</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="row g-4 stagger">
+
+          <!-- Project 1: DRA Transformasi Digital -->
+          <div class="col-md-6">
+            <div class="project-card">
+              <div class="project-header">
+                <span class="project-tag">Analisis Sistem · Riset</span>
+                <h3 class="project-title">Analisis DRA: Transformasi Digital Fakultas Ekonomi dan Bisnis</h3>
+              </div>
+              <div class="project-body">
+                <p class="project-desc">
+                  Penelitian mendalam mengenai kesiapan dan implementasi transformasi digital di Fakultas Ekonomi dan Bisnis (FEB), Universitas La Tansa Mashiro. Menggunakan metode <strong>Digital Readiness Assessment (DRA)</strong>, riset ini melibatkan wawancara langsung dengan berbagai pemangku kepentingan — mulai dari mahasiswa, dosen, staf akademik, hingga Dekan FEB — untuk memetakan kondisi aktual infrastruktur digital, budaya inovasi, dan gap yang perlu diatasi dalam proses transformasi.
+                </p>
+                <div class="project-meta">
+                  <span class="project-chip">DRA Framework</span>
+                  <span class="project-chip">Wawancara Mendalam</span>
+                  <span class="project-chip">Analisis Kualitatif</span>
+                  <span class="project-chip">FEB Universitas La Tansa Mashiro</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Portfolio Website -->
+          <div class="col-md-6">
+            <div class="project-card">
+              <div class="project-header">
+                <span class="project-tag">Web Development · Design</span>
+                <h3 class="project-title">Personal Portfolio Website</h3>
+              </div>
+              <div class="project-body">
+                <p class="project-desc">
+                  Membangun dan mendesain website portfolio pribadi yang responsif menggunakan HTML5, CSS3, dan Bootstrap 5. Website ini mencerminkan identitas profesional, menampilkan riwayat pendidikan, sertifikasi, keahlian, dan proyek akademik secara terstruktur dan estetik.
+                </p>
+                <div class="project-meta">
+                  <span class="project-chip">HTML5</span>
+                  <span class="project-chip">CSS3</span>
+                  <span class="project-chip">Bootstrap 5</span>
+                  <span class="project-chip">Responsive Design</span>
+                  <span class="project-chip">GitHub Pages</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <div class="container">
+        <div class="text-center fade-in-up">
+          <p class="section-label">Hubungi Saya</p>
+          <h2 class="section-title">Contact Me</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="row justify-content-center fade-in-up">
+          <div class="col-lg-6 col-md-8">
+            <div class="contact-form-wrap">
+              <div class="mb-3">
+                <label for="name" class="form-label">Nama Lengkap</label>
+                <input type="text" class="form-control" id="name" placeholder="Nama kamu..." />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="email@contoh.com" />
+              </div>
+              <div class="mb-4">
+                <label for="pesan" class="form-label">Pesan</label>
+                <textarea class="form-control" id="pesan" rows="4" placeholder="Tulis pesanmu di sini..."></textarea>
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary">
+                  <i class="bi bi-send-fill me-2"></i>Kirim Pesan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <p>
+        &copy; 2026 <strong>Shabrina Nuryani Wijaya</strong> &nbsp;·&nbsp; NIM 515241017
+        &nbsp;·&nbsp; Sistem Informasi, Universitas La Tansa Mashiro
+      </p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+      // Intersection Observer for scroll animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.fade-in-up, .stagger').forEach(el => observer.observe(el));
+
+      // Smooth navbar active link
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(s => {
+          if (window.scrollY >= s.offsetTop - 100) current = s.id;
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+        });
+      });
+
+      // Skill bar animation on scroll
+      const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.skill-bar').forEach(bar => {
+              bar.style.width = bar.style.width; // trigger reflow
+            });
+          }
+        });
+      }, { threshold: 0.3 });
+
+      document.querySelectorAll('#skills').forEach(el => skillObserver.observe(el));
+    </script>
+  </body>
+</html>
